@@ -1,8 +1,12 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <vector>
+#include "software.h"
 
 using namespace std;
+
+class Software;
 
 class Usuario{
     protected:
@@ -12,6 +16,7 @@ class Usuario{
         int edad;
         string correo;
         bool accederLog;
+        vector<Software*> listaSoftware;
 
     public:
         //CONSTRUCTOR
@@ -26,6 +31,19 @@ class Usuario{
         //DESTRUCTOR
         ~Usuario(){
             cout << "Se ha eliminado un objeto Usuario" << endl;
+        }
+
+        //AÑADIR/QUITAR SOFTWARE
+        void addSoftware(Software* Software){
+            this -> listaSoftware.push_back(Software);
+        }
+        void eliminarSoftware(Software* software) {
+            for (auto it = listaSoftware.begin(); it != listaSoftware.end(); ++it) {
+                if (*it == software) {
+                    listaSoftware.erase(it);
+                    break;
+                }
+            }
         }
 
         //GETTERS
@@ -44,24 +62,23 @@ class Usuario{
         bool getLog(){
             return this -> accederLog;
         }
+        vector<Software*> getBiblioteca(){
+            return this -> listaSoftware;
+        }
 
         //SETTERS
         void setNombre(string nuevoNombre) {
             this -> nombre = nuevoNombre;
         }
-
         void setContrasena(string nuevaContrasena) {
             this -> contrasena = nuevaContrasena;
         }
-
         void setEdad(int nuevaEdad) {
             this -> edad = nuevaEdad;
         }
-
         void setCorreo(string nuevoCorreo) {
             this -> correo = nuevoCorreo;
         }
-
         void setAccederLog(bool nuevoAccederLog) {
             this -> accederLog = nuevoAccederLog;
         }

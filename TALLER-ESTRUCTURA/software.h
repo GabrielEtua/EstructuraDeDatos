@@ -3,8 +3,11 @@
 #include <string>
 #include <vector>
 #include <queue>
+#include "usuario.h"
 
 using namespace std;
+
+class Usuario;
 
 class Software{
     protected:
@@ -29,7 +32,7 @@ class Software{
             cout << "Se ha destruido un objeto tipo software" << endl;
         }
         //AÑADIR/QUITAR USUARIO
-        void anadirUsuario(Usuario* Usuario){
+        void addUsuario(Usuario* Usuario){
             this -> listaUsuarios.push_back(Usuario);
         }
         void eliminarUsuario(Usuario* usuario) {
@@ -40,7 +43,6 @@ class Software{
                 }
             }
         }
-
 
         //GETTERS
         string getNombre(){
